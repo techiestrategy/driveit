@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "tech-crush",
-    "slug": "tech-crush",
+    "name": "driveit",
+    "slug": "driveit",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/driveit-splash.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,27 +13,31 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/splash-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/splash-icon.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/driveit-splash.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#304FFE"
         }
       ]
     ],
+    "splash": {
+      "image": "./assets/images/driveit-splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#304FFE"
+    },
     "experiments": {
       "typedRoutes": true
     }

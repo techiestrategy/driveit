@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-
+import { Image, StyleSheet } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -14,7 +14,9 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        //tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#304FFE', 
+        tabBarInactiveTintColor: 'gray', 
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -26,20 +28,58 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
-      <Tabs.Screen
+
+     
+
+
+<Tabs.Screen
+        name="vehicles"
+        options={{
+          title: 'Vehicles',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/ic location.png')}
+              style={[styles.imageLogo, { tintColor: color, width: size, height: size }]}
+            />
+          ),
+        }}
+      />
+
+<Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Branches',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/ic main.png')}
+              style={[styles.imageLogo, { tintColor: color, width: size, height: size }]}
+            />
+          ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
+      
+
+<Tabs.Screen
+        name="accounts"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Account',
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require('../../assets/images/ic user.png')}
+              style={[styles.imageLogo, { tintColor: color, width: size, height: size }]}
+            />
+          ),
         }}
       />
+
+      
     </Tabs>
   );
 }
+
+
+const styles = StyleSheet.create({
+  imageLogo: {
+    resizeMode: 'contain',
+  },
+});
