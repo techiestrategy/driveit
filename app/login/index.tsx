@@ -51,6 +51,7 @@ export default function LoginScreen({ onLogin }: Props) {
             placeholder="Enter your username"
             isPassword={false}
             isUsername={true}
+            
           />
 
           <FormInput
@@ -60,6 +61,8 @@ export default function LoginScreen({ onLogin }: Props) {
             isPassword={true}
             isUsername={false}
           />
+
+          <Text style={{ fontFamily: 'Poppins_Medium', fontSize: 14, textAlign: 'center', color: '#fff', marginTop: -10, marginBottom: 15}}>Forgot Password</Text>
 
           <Button text={'LOG IN'} onPress={handleLoginPress} />
 
