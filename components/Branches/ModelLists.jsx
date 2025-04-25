@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginTop: -5,
   },
   firstItemTitle: {
-    color: 'white', // Style for the title of the first item
+    color: 'white', 
   },
   counts: {
     fontSize: 14,
