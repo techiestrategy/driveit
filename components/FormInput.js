@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { TextInput, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import {
+  TextInput,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const FormInput = ({ value = '', onChangeText, placeholder, isPassword = false, isUsername }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(!isPassword);
   const [hasFinishedTyping, setHasFinishedTyping] = useState(false);
+  const { width } = useWindowDimensions();
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -12,8 +19,7 @@ const FormInput = ({ value = '', onChangeText, placeholder, isPassword = false, 
 
   return (
     <View style={styles.container}>
-
-      <View style={styles.inputContainer}>
+      <View style={[styles.inputContainer, { width: width * 0.9 }]}>
         <TextInput
           style={[
             styles.input,
@@ -24,8 +30,8 @@ const FormInput = ({ value = '', onChangeText, placeholder, isPassword = false, 
           onChangeText={onChangeText}
           placeholder={placeholder}
           secureTextEntry={isPassword && isPasswordVisible}
-          onBlur={() => setHasFinishedTyping(true)} 
-          onFocus={() => setHasFinishedTyping(false)} 
+          onBlur={() => setHasFinishedTyping(true)}
+          onFocus={() => setHasFinishedTyping(false)}
         />
         {isPassword && (
           <TouchableOpacity onPress={togglePasswordVisibility} style={styles.iconContainer}>
@@ -44,12 +50,7 @@ const FormInput = ({ value = '', onChangeText, placeholder, isPassword = false, 
 const styles = StyleSheet.create({
   container: {
     marginBottom: 15,
-  },
-  label: {
-    marginBottom: 5,
-    fontFamily: 'Poppins_Medium',
-    fontSize: 14,
-    fontWeight: '500',
+    alignItems: 'center',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -59,7 +60,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginTop: 10,
     marginBottom: 10,
-    width: 310,
   },
   input: {
     flex: 1,
@@ -68,9 +68,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_Medium',
     fontSize: 16,
     paddingLeft: 10,
-    flexDirection: 'row-reverse', 
-    justifyContent: 'flex-start', 
-    alignItems: 'center',
   },
   iconContainer: {
     position: 'absolute',
@@ -79,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   finishedUsername: {
-    paddingRight: 30, 
+    paddingRight: 30,
   },
 });
 
